@@ -1,0 +1,15 @@
+{
+  "name": "chatwoot-kanban",
+  "version": "1.0.0",
+  "description": "Kanban para Chatwoot com proxy para contornar CORS",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon --inspect server.js"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^3.1.10"
+  }
+}

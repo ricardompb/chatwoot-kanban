@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatwoot Kanban</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Chatwoot Kanban</h1>
+        <div class="header-controls">
+            <input type="text" id="api-token" placeholder="Token de API do Chatwoot">
+            <input type="text" id="account-id" placeholder="ID da Conta">
+            <button id="load-data" class="btn primary">Carregar Dados</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="kanban-container">
+            <div class="kanban-column" id="pending">
+                <h2>Pendentes <span class="counter">0</span></h2>
+                <div class="kanban-items"></div>
+            </div>
+            <div class="kanban-column" id="open">
+                <h2>Em Aberto <span class="counter">0</span></h2>
+                <div class="kanban-items"></div>
+            </div>
+            <div class="kanban-column" id="resolved">
+                <h2>Resolvidos <span class="counter">0</span></h2>
+                <div class="kanban-items"></div>
+            </div>
+            <div class="kanban-column" id="closed">
+                <h2>Fechados <span class="counter">0</span></h2>
+                <div class="kanban-items"></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="conversation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Detalhes da Conversa</h2>
+            <div id="conversation-details"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
