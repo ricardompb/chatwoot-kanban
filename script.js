@@ -9,7 +9,7 @@ const apiTokenInput = document.getElementById("api-token");
 const accountIdInput = document.getElementById("account-id");
 const kanbanColumns = document.querySelectorAll(".kanban-column");
 const modal = document.getElementById("conversation-modal");
-const closeModalBtn = document.querySelector(".close");
+const closeModalBtn = document.querySelector(".snoozed");
 const conversationDetails = document.getElementById("conversation-details");
 
 // Inicialização
@@ -128,29 +128,56 @@ function hideLoading() {
 }
 
 async function fetchConversations() {
-  const url = `${API_BASE_URL}/accounts/${accountId}/conversations`;
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      api_access_token: apiToken,
-      "Content-Type": "application/json",
-    },
-  });
+  // Lista de todos os status possíveis no Chatwoot
+  const statuses = ["pending", "open", "resolved", "snoozed"];
+  let allConversations = [];
 
-  if (!response.ok) {
-    throw new Error(`Erro na API: ${response.status} ${response.statusText}`);
+  // Fazer uma requisição para cada status
+  for (const status of statuses) {
+    try {
+      const url = `${API_BASE_URL}/accounts/${accountId}/conversations?status=${status}`;
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          api_access_token: apiToken,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        console.warn(
+          `Erro ao buscar conversas com status ${status}: ${response.status} ${response.statusText}`
+        );
+        continue; // Continua com o próximo status mesmo se um falhar
+      }
+
+      const data = await response.json();
+
+      // Verificar se a estrutura contém data.payload (como no seu JSON)
+      let conversations = [];
+      if (data.data && data.data.payload) {
+        conversations = data.data.payload;
+      } else {
+        conversations = data.data || data.payload || [];
+      }
+
+      console.log(
+        `Conversas encontradas com status ${status}:`,
+        conversations.length
+      );
+
+      // Adicionar as conversas à lista geral
+      allConversations = allConversations.concat(conversations);
+    } catch (error) {
+      console.error(`Erro ao buscar conversas com status ${status}:`, error);
+      // Continua com o próximo status mesmo se um falhar
+    }
   }
 
-  const data = await response.json();
+  console.log(`Total de conversas encontradas: ${allConversations.length}`);
+  console.log("Todas as conversas:", JSON.stringify(allConversations, null, 2));
 
-  console.log(JSON.stringify(data, null, 2));
-
-  // Verificar se a estrutura contém data.payload (como no seu JSON)
-  if (data.data && data.data.payload) {
-    return data.data.payload;
-  }
-  // Fallback para estrutura simples
-  return data.data || data.payload || [];
+  return allConversations;
 }
 
 function groupConversationsByStatus(conversations) {
@@ -158,7 +185,7 @@ function groupConversationsByStatus(conversations) {
     pending: [],
     open: [],
     resolved: [],
-    closed: [],
+    snoozed: [],
   };
 
   conversations.forEach((conversation) => {
@@ -209,12 +236,13 @@ function createConversationItem(conversation) {
   const now = new Date();
   const hoursDiff = Math.floor((now - createdAt) / (1000 * 60 * 60));
 
-  let priority = "low";
-  if (hoursDiff > 24) {
-    priority = "high";
-  } else if (hoursDiff > 6) {
-    priority = "medium";
-  }
+  const priority = conversation.priority;
+  // let priority = "low";
+  // if (hoursDiff > 24) {
+  //   priority = "high";
+  // } else if (hoursDiff > 6) {
+  //   priority = "medium";
+  // }
 
   // Formatar data
   const formattedDate = new Intl.DateTimeFormat("pt-BR", {
@@ -256,16 +284,26 @@ function createConversationItem(conversation) {
     conversation.sender?.name ||
     `Cliente #${conversation.id}`;
 
+  const calcPriority = (() => {
+    if (priority) {
+      const priorityOptions = {
+        high: "Alta",
+        medium: "Média",
+        low: "Baixa",
+      };
+      const priorityDesc = priorityOptions[priority] || "";
+      return `<span class="priority ${priority}">${priorityDesc}</span>`;
+    }
+    return "";
+  })();
+
   item.innerHTML = `
-        <h3>${senderName}</h3>
-        <p>${truncatedMessage}</p>
-        <div class="meta">
-            <span>${formattedDate}</span>
-            <span class="priority ${priority}">${
-    priority === "high" ? "Alta" : priority === "medium" ? "Média" : "Baixa"
-  }</span>
-        </div>
-    `;
+    <h3>${senderName}</h3>
+    <p>${truncatedMessage}</p>
+    <div class="meta">
+      <span>${formattedDate}</span>
+      ${calcPriority}  
+    </div>`;
 
   // Adicionar evento de clique para abrir modal com detalhes
   item.addEventListener("click", (e) => {
@@ -455,7 +493,7 @@ function getStatusLabel(status) {
     pending: "Pendente",
     open: "Em Aberto",
     resolved: "Resolvido",
-    closed: "Fechado",
+    snoozed: "Adiado",
   };
 
   return statusMap[status] || status;
