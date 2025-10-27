@@ -7,9 +7,10 @@ let accountId = "";
 const loadDataBtn = document.getElementById("load-data");
 const apiTokenInput = document.getElementById("api-token");
 const accountIdInput = document.getElementById("account-id");
+const toggleApiTokenBtn = document.getElementById("toggle-api-token");
 const kanbanColumns = document.querySelectorAll(".kanban-column");
 const modal = document.getElementById("conversation-modal");
-const closeModalBtn = document.querySelector(".snoozed");
+const closeModalBtn = document.querySelector(".close");
 const conversationDetails = document.getElementById("conversation-details");
 
 // Inicialização
@@ -54,6 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("click", (e) => {
     if (e.target === modal) modal.style.display = "none";
   });
+
+  // Event listener para o botão de toggle do token
+  toggleApiTokenBtn.addEventListener("click", toggleApiTokenVisibility);
 
   // Adicionar botão para testar com dados simulados
   const testBtn = document.createElement("button");
@@ -493,10 +497,26 @@ function getStatusLabel(status) {
     pending: "Pendente",
     open: "Em Aberto",
     resolved: "Resolvido",
+    closed: "Fechado",
     snoozed: "Adiado",
   };
 
   return statusMap[status] || status;
+}
+
+// Função para alternar visibilidade do token de API
+function toggleApiTokenVisibility() {
+  const icon = toggleApiTokenBtn.querySelector('i');
+  
+  if (apiTokenInput.type === 'password') {
+    apiTokenInput.type = 'text';
+    icon.className = 'fas fa-eye-slash';
+    toggleApiTokenBtn.title = 'Esconder Token';
+  } else {
+    apiTokenInput.type = 'password';
+    icon.className = 'fas fa-eye';
+    toggleApiTokenBtn.title = 'Mostrar Token';
+  }
 }
 
 // Função para testar com dados simulados baseados no JSON fornecido
