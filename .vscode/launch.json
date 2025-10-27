@@ -7,7 +7,7 @@
         "name": "Kanban Chatwoot",
         "runtimeExecutable": "npm",
         "runtimeArgs": ["run", "start", "--watch"],
-        "cwd": "${workspaceFolder}",
+        "cwd": "${workspaceFolder}/src",
         "console": "integratedTerminal"
       }
     ]

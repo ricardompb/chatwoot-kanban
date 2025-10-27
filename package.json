@@ -4,7 +4,7 @@
   "description": "Kanban para Chatwoot com proxy para contornar CORS",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --inspect server.js"
+    "start": "nodemon --inspect src/server.js"
   },
   "dependencies": {
     "axios": "^1.4.0",
