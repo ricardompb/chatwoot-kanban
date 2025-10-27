@@ -1,332 +1,332 @@
 :root {
-    --primary-color: #1f93ff;
-    --secondary-color: #f5f7f9;
-    --text-color: #3c4858;
-    --border-color: #e6e8eb;
-    --success-color: #44ce4b;
-    --warning-color: #ffc532;
-    --danger-color: #ff5c5c;
-    --gray-light: #f0f2f5;
+  --primary-color: #1f93ff;
+  --secondary-color: #f5f7f9;
+  --text-color: #3c4858;
+  --border-color: #e6e8eb;
+  --success-color: #44ce4b;
+  --warning-color: #ffc532;
+  --danger-color: #ff5c5c;
+  --gray-light: #f0f2f5;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-color);
-    background-color: var(--secondary-color);
-    line-height: 1.6;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  background-color: var(--secondary-color);
+  line-height: 1.6;
 }
 
 header {
-    background-color: white;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+  background-color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 h1 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
 }
 
 .header-controls {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .input-group {
-    position: relative;
-    display: flex;
-    align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .input-group input[type="text"],
 .input-group input[type="password"] {
-    padding: 8px 40px 8px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 14px;
-    min-width: 200px;
+  padding: 8px 40px 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+  min-width: 200px;
 }
 
 .toggle-password {
-    position: absolute;
-    right: 8px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text-color);
-    padding: 4px;
-    border-radius: 2px;
-    transition: color 0.3s ease;
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 4px;
+  border-radius: 2px;
+  transition: color 0.3s ease;
 }
 
 .toggle-password:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .toggle-password i {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 input[type="text"] {
-    padding: 8px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 .btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .btn.primary {
-    background-color: var(--primary-color);
-    color: white;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .btn.primary:hover {
-    background-color: #0d73cc;
+  background-color: #0d73cc;
 }
 
 .btn.secondary {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
 }
 
 .btn.secondary:hover {
-    background-color: var(--gray-light);
+  background-color: var(--gray-light);
 }
 
 main {
-    padding: 2rem;
+  padding: 2rem;
 }
 
 .kanban-container {
-    display: flex;
-    gap: 1.5rem;
-    overflow-x: auto;
-    padding-bottom: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
 }
 
 .kanban-column {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    min-width: 300px;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  min-width: 300px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
 .kanban-column h2 {
-    padding: 1rem;
-    font-size: 1rem;
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 1rem;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .counter {
-    background-color: var(--gray-light);
-    border-radius: 12px;
-    padding: 2px 8px;
-    font-size: 0.8rem;
-    font-weight: normal;
+  background-color: var(--gray-light);
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.8rem;
+  font-weight: normal;
 }
 
 .kanban-items {
-    padding: 1rem;
-    flex-grow: 1;
-    min-height: 200px;
-    overflow-y: auto;
-    max-height: calc(100vh - 200px);
+  padding: 1rem;
+  flex-grow: 1;
+  min-height: 200px;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
 }
 
 .kanban-item {
-    background-color: var(--secondary-color);
-    border-radius: 6px;
-    padding: 1rem;
-    margin-bottom: 0.8rem;
-    cursor: grab;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    transition: all 0.2s;
+  background-color: var(--secondary-color);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  cursor: grab;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
 }
 
 .kanban-item:hover {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .kanban-item h3 {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
 }
 
 .kanban-item p {
-    font-size: 0.8rem;
-    color: #666;
-    margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.5rem;
 }
 
 .kanban-item .meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.75rem;
-    color: #888;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #888;
 }
 
 .kanban-item .priority {
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
 }
 
 .priority.high {
-    background-color: var(--danger-color);
-    color: white;
+  background-color: var(--danger-color);
+  color: white;
 }
 
 .priority.medium {
-    background-color: var(--warning-color);
-    color: white;
+  background-color: var(--warning-color);
+  color: white;
 }
 
 .priority.low {
-    background-color: var(--success-color);
-    color: white;
+  background-color: var(--success-color);
+  color: white;
 }
 
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-    background-color: white;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 700px;
-    max-height: 80vh;
-    overflow-y: auto;
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover {
-    color: black;
+  color: black;
 }
 
 #conversation-details {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .message {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
 }
 
 .message.incoming {
-    background-color: var(--gray-light);
-    margin-right: 20%;
+  background-color: var(--gray-light);
+  margin-right: 20%;
 }
 
 .message.outgoing {
-    background-color: var(--primary-color);
-    color: white;
-    margin-left: 20%;
+  background-color: var(--primary-color);
+  color: white;
+  margin-left: 20%;
 }
 
 .message.bot {
-    background-color: var(--warning-color);
-    color: var(--text-color);
-    margin-left: 10%;
-    margin-right: 10%;
+  background-color: var(--warning-color);
+  color: var(--text-color);
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .message .sender {
-    font-weight: bold;
-    margin-bottom: 5px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .message .time {
-    font-size: 0.7rem;
-    color: #888;
-    text-align: right;
+  font-size: 0.7rem;
+  color: #888;
+  text-align: right;
 }
 
 .sortable-ghost {
-    opacity: 0.4;
+  opacity: 0.4;
 }
 
 .loading {
-    text-align: center;
-    padding: 20px;
-    color: var(--text-color);
-    font-style: italic;
+  text-align: center;
+  padding: 20px;
+  color: var(--text-color);
+  font-style: italic;
 }
 
 .client-info {
-    background-color: var(--gray-light);
-    padding: 15px;
-    border-radius: 6px;
-    margin-bottom: 15px;
+  background-color: var(--gray-light);
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
 }
 
 .messages-container {
-    max-height: 400px;
-    overflow-y: auto;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .header-controls {
-        margin-top: 1rem;
-        width: 100%;
-    }
-    
-    .kanban-container {
-        flex-direction: column;
-    }
-    
-    .kanban-column {
-        width: 100%;
-    }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-controls {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .kanban-container {
+    flex-direction: column;
+  }
+
+  .kanban-column {
+    width: 100%;
+  }
 }
