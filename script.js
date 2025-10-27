@@ -141,6 +141,8 @@ async function fetchConversations() {
     }
     
     const data = await response.json();
+
+    console.log(JSON.stringify(data, null, 2));
     
     // Verificar se a estrutura contém data.payload (como no seu JSON)
     if (data.data && data.data.payload) {
@@ -151,7 +153,6 @@ async function fetchConversations() {
 }
 
 function groupConversationsByStatus(conversations) {
-    debugger
     const grouped = {
         pending: [],
         open: [],

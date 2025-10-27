@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Kanban Chatwoot",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": ["run", "start", "--watch"],
+        "cwd": "${workspaceFolder}",
+        "console": "integratedTerminal"
+      }
+    ]
+}

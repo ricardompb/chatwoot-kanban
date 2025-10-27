@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const path = require('path');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,7 +25,7 @@ app.use('/api/v1', async (req, res) => {
   }
 
   try {
-    const chatwootUrl = 'https://chat.azpost.com.br/api/v1' + req.url;
+    const chatwootUrl = `https://${process.env.BASE_URL}/api/v1${req.url}`;
     
     const config = {
       method: req.method,
