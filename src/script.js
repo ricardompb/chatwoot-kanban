@@ -1,5 +1,6 @@
 // Configurações e variáveis globais
 const API_BASE_URL = "/api/v1";
+const API_BUILD_URL_TO_REDIRECT = "/build-url-to-redirect";
 let apiToken = "";
 let accountId = "";
 
@@ -58,13 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Event listener para o botão de toggle do token
   toggleApiTokenBtn.addEventListener("click", toggleApiTokenVisibility);
-
-  // Adicionar botão para testar com dados simulados
-  const testBtn = document.createElement("button");
-  testBtn.textContent = "Testar com Dados Simulados";
-  testBtn.className = "btn secondary";
-  testBtn.addEventListener("click", loadTestData);
-  document.querySelector(".header-controls").appendChild(testBtn);
 });
 
 // Funções principais
@@ -93,7 +87,7 @@ async function loadConversations() {
     // Buscar conversas da API
     const conversations = await fetchConversations();
 
-    console.log("Conversas recebidas:", conversations);
+    // console.log("Conversas recebidas:", conversations);
 
     // Verificar se conversations é um array
     if (!Array.isArray(conversations)) {
@@ -105,7 +99,7 @@ async function loadConversations() {
     // Agrupar conversas por status
     const groupedConversations = groupConversationsByStatus(conversations);
 
-    console.log("Conversas agrupadas:", groupedConversations);
+    // console.log("Conversas agrupadas:", groupedConversations);
 
     // Renderizar conversas nas colunas
     renderConversations(groupedConversations);
@@ -178,8 +172,8 @@ async function fetchConversations() {
     }
   }
 
-  console.log(`Total de conversas encontradas: ${allConversations.length}`);
-  console.log("Todas as conversas:", JSON.stringify(allConversations, null, 2));
+  // console.log(`Total de conversas encontradas: ${allConversations.length}`);
+  // console.log("Todas as conversas:", JSON.stringify(allConversations, null, 2));
 
   return allConversations;
 }
@@ -324,19 +318,31 @@ function createConversationItem(conversation) {
 }
 
 async function showConversationDetails(conversation) {
-  try {
-    // Buscar detalhes completos da conversa
-    const fullConversation = await fetchConversationDetails(conversation.id);
+  const { id, account_id } = conversation;
+  const url = await fetch(
+    `${API_BUILD_URL_TO_REDIRECT}?accountId=${account_id}&conversationId=${id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const { url: urlChat } = await url.json();
+  open(urlChat, "_blank");
 
-    // Renderizar detalhes no modal
-    renderConversationDetails(fullConversation);
-
-    // Mostrar modal
-    modal.style.display = "block";
-  } catch (error) {
-    console.error("Erro ao buscar detalhes da conversa:", error);
-    alert("Erro ao buscar detalhes da conversa.");
-  }
+  // console.log(process.env.BASE_URL, id, account_id);
+  // try {
+  //   // Buscar detalhes completos da conversa
+  //   const fullConversation = await fetchConversationDetails(conversation.id);
+  //   // Renderizar detalhes no modal
+  //   renderConversationDetails(fullConversation);
+  //   // Mostrar modal
+  //   modal.style.display = "block";
+  // } catch (error) {
+  //   console.error("Erro ao buscar detalhes da conversa:", error);
+  //   alert("Erro ao buscar detalhes da conversa.");
+  // }
 }
 
 async function fetchConversationDetails(conversationId) {

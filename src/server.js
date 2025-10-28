@@ -53,6 +53,21 @@ app.use("/api/v1", async (req, res) => {
   }
 });
 
+// app.post('/api/v1/get-url-to-chat', (req, res) => {
+//   const { accountId, conversationId } = req.body;
+//   res.send(
+//     `https://${process.env.BASE_URL}/app/accounts/${accountId}/conversations/${conversationId}`
+//   );
+// })
+
+app.use("/build-url-to-redirect", async (req, res) => {
+  const { accountId, conversationId } = req.query;
+  res.json({ 
+    url: `https://${process.env.BASE_URL}/app/accounts/${accountId}/conversations/${conversationId}`
+  });
+});
+
+
 // Iniciar o servidor
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
