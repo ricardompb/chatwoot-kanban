@@ -114,15 +114,13 @@ async function loadConversations() {
 }
 
 function showLoading() {
-  document.querySelectorAll(".kanban-items").forEach((column) => {
-    column.innerHTML = '<div class="loading">Carregando...</div>';
-  });
+  const loadingOverlay = document.getElementById('loading-overlay');
+  loadingOverlay.style.display = 'flex';
 }
 
 function hideLoading() {
-  document.querySelectorAll(".loading").forEach((loading) => {
-    loading.remove();
-  });
+  const loadingOverlay = document.getElementById('loading-overlay');
+  loadingOverlay.style.display = 'none';
 }
 
 async function fetchConversations() {
