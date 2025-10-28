@@ -165,7 +165,8 @@ main {
   border-radius: 6px;
   padding: 1rem;
   margin-bottom: 0.8rem;
-  cursor: grab;
+  /* cursor: grab; */
+  cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: all 0.2s;
 }

@@ -31,24 +31,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Inicializar Sortable.js para cada coluna
-  kanbanColumns.forEach((column) => {
-    const columnId = column.id;
-    const itemsContainer = column.querySelector(".kanban-items");
+  // kanbanColumns.forEach((column) => {
+  //   const columnId = column.id;
+  //   const itemsContainer = column.querySelector(".kanban-items");
 
-    new Sortable(itemsContainer, {
-      group: "kanban",
-      animation: 150,
-      ghostClass: "sortable-ghost",
-      onEnd: function (evt) {
-        const itemId = evt.item.dataset.id;
-        const newStatus = evt.to.parentElement.id;
+  //   new Sortable(itemsContainer, {
+  //     group: "kanban",
+  //     animation: 150,
+  //     ghostClass: "sortable-ghost",
+  //     onEnd: function (evt) {
+  //       const itemId = evt.item.dataset.id;
+  //       const newStatus = evt.to.parentElement.id;
 
-        if (itemId && newStatus) {
-          updateConversationStatus(itemId, newStatus);
-        }
-      },
-    });
-  });
+  //       if (itemId && newStatus) {
+  //         updateConversationStatus(itemId, newStatus);
+  //       }
+  //     },
+  //   });
+  // });
 
   // Event listeners
   loadDataBtn.addEventListener("click", loadConversations);
