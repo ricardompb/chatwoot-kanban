@@ -325,6 +325,10 @@ main {
   z-index: 9999;
 }
 
+.loading-hidden {
+  display: none;
+}
+
 .loading-spinner {
   text-align: center;
   color: white;
