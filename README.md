@@ -265,4 +265,11 @@ Contribuições são bem-vindas! Por favor:
 
 ---
 
+## 🙌 Apoie o Projeto
+Se este conteúdo te ajudou e você deseja contribuir para a continuidade dos projetos, você pode apoiar via Pix:
+
+📲 Chave Pix (e-mail): ricardompb@icloud.com
+
+Seu apoio faz toda a diferença! 💜
+
 **Desenvolvido com ❤️ para melhorar a gestão de conversas no Chatwoot**
